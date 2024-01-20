@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dsj_test.mapper.CommentMapper">
+    <select id="selectComment" parameterType="com.example.dsj_test.models.CommentModel">
+        SELECT user_id, MAX(user_name) AS user_name, COUNT(*) AS comment_num, COUNT(*) AS total_comment_count
+        FROM test.comments
+        GROUP BY user_id
+        ORDER BY total_comment_count DESC
+        LIMIT 10;
+    </select>
+</mapper>
